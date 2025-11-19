@@ -1,4 +1,5 @@
 ﻿using Arkanoid.Ball;
+using Arkanoid.Bricks;
 using Arkanoid.Environment;
 using Arkanoid.Platform;
 using UnityEngine;
@@ -14,9 +15,11 @@ namespace Arkanoid.Level
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_levelConfig);
+            
             EnvironmentInstaller.Install(builder);
             PlatformInstaller.Install(builder);
             BallInstaller.Install(builder);
+            BricksInstaller.Install(builder);
         }
     }
 }
