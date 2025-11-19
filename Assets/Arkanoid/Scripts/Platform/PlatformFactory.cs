@@ -15,10 +15,11 @@ namespace Arkanoid.Platform
             _objectResolver = objectResolver;
         }
         
-        public void Create()
+        public GameObject Create()
         {
-            var go = Object.Instantiate(_platformContent.PlatformPrefab);
+            GameObject go = Object.Instantiate(_platformContent.PlatformPrefab);
             _objectResolver.InjectGameObject(go);
+            return go;
         }
     }
 }

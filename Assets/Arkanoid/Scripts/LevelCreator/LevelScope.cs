@@ -1,4 +1,5 @@
-﻿using Arkanoid.Environment;
+﻿using Arkanoid.Ball;
+using Arkanoid.Environment;
 using Arkanoid.Platform;
 using UnityEngine;
 using VContainer;
@@ -15,6 +16,7 @@ namespace Arkanoid.Level
             builder.RegisterInstance(_levelConfig);
             EnvironmentInstaller.Install(builder);
             PlatformInstaller.Install(builder);
+            BallInstaller.Install(builder);
         }
     }
 }
