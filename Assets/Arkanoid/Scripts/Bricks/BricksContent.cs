@@ -1,4 +1,5 @@
-﻿using Arkanoid.Content;
+﻿using System;
+using Arkanoid.Content;
 using UnityEngine;
 
 namespace Arkanoid.Bricks
@@ -8,5 +9,17 @@ namespace Arkanoid.Bricks
     {
         [field: SerializeField] public BrickView BrickPrefab { get; private set; }
         [field: SerializeField] public LayerMask BallLayer { get; set; }
+
+        public Color ColorByHealth(int health)
+        {
+            return health switch
+            {
+                1 => Color.green,
+                2 => Color.yellow,
+                3 => Color.red,
+                _ => throw new InvalidOperationException()
+            };
+        }
+
     }
 }
