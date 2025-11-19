@@ -22,10 +22,10 @@ namespace Arkanoid.Platform
         
         void FixedUpdate()
         {
-            ApplyVelocity();
+            Move();
         }
 
-        private void ApplyVelocity()
+        private void Move()
         {
             var move = CurrentInput * _platformContent.Speed;
             _rb.velocity = new Vector2(move, _rb.velocity.y);
