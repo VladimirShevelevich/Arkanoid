@@ -1,4 +1,5 @@
 ﻿using Arkanoid.Content;
+using Arkanoid.Input;
 using Arkanoid.Level;
 using UnityEngine;
 using VContainer;
@@ -13,6 +14,7 @@ namespace Arkanoid
         protected override void Configure(IContainerBuilder builder)
         {
             _contentHolder.Register(builder);
+            InputInstaller.Install(builder);
             builder.UseEntryPoints(ep =>
             {
                 ep.Add<LevelCreatorService>();

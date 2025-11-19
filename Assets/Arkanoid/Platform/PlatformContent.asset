@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344a9570fbfa4182b9a625dd645f5ecc, type: 3}
   m_Name: PlatformContent
   m_EditorClassIdentifier: 
-  PlatformPrefab: {fileID: 1393186391074387757, guid: 9f94648f09d528d4db6a24384bfaa315, type: 3}
+  <PlatformPrefab>k__BackingField: {fileID: 7482198467475757865, guid: 9f94648f09d528d4db6a24384bfaa315, type: 3}
+  <Speed>k__BackingField: 4
