@@ -21,9 +21,9 @@ namespace Arkanoid.Bricks
 
         private void SpawnBricks()
         {
-            foreach (var brickGridPos in _levelConfig.BricksGridPositions)
+            foreach (var brickInfo in _levelConfig.Bricks)   
             {
-                _bricksFactory.Create(brickGridPos);
+                _bricksFactory.Create(brickInfo);
             }
         }
     }

@@ -15,7 +15,17 @@ namespace Arkanoid.Bricks
         {
             _bricksContent = bricksContent;
         }
-        
+
+        public void UpdateViewByHealth(int currentHealth)
+        {
+            
+        }
+
+        public void PlayDestroyVfx()
+        {
+            
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (((1 << other.gameObject.layer) & _bricksContent.BallLayer) != 0)

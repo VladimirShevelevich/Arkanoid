@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Arkanoid.Level;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -17,14 +18,21 @@ namespace Arkanoid.Bricks
             _objectResolver = objectResolver;
         }
         
-        public GameObject Create(Vector2Int gridPosition)
+        public void Create(LevelConfig.BrickInfo brickInfo)
         {
-            GameObject go = Object.Instantiate(_bricksContent.BrickPrefab);
-            Vector2 brickSize = go.GetComponent<SpriteRenderer>().bounds.size;
-            Vector2 pos = GetPosition(brickSize, gridPosition);
-            go.transform.position = pos;
-            _objectResolver.InjectGameObject(go);
-            return go;
+            BrickView view = Object.Instantiate(_bricksContent.BrickPrefab);
+            Vector2 brickSize = view.GetComponent<SpriteRenderer>().bounds.size;
+            Vector2 pos = GetPosition(brickSize, brickInfo.GridPosition);
+            view.transform.position = pos;
+            BrickHealth health = CreateHealth(brickInfo.Health, view);
+            
+            _objectResolver.InjectGameObject(view.gameObject);
+            health.Init();
+        }
+
+        private BrickHealth CreateHealth(int initialHealth, BrickView view)
+        {
+            return new BrickHealth(initialHealth, view);
         }
 
         private Vector2 GetPosition(Vector2 brickSize, Vector2Int gridPosition)

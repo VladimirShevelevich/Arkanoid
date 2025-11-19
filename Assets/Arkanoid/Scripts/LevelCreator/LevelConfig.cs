@@ -1,13 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Arkanoid.Level
 {
     [CreateAssetMenu(fileName = "Level", menuName = "Content/Level/LevelConfig")]
     public class LevelConfig : ScriptableObject
     {
-        /// <summary>
-        /// column amd raw index of the brick
-        /// </summary>
-        [field: SerializeField] public Vector2Int[] BricksGridPositions { get; private set; }
+        [field: SerializeField] public BrickInfo[] Bricks { get; private set; }
+        
+        [Serializable]
+        public struct BrickInfo
+        {
+            /// <summary>
+            /// column amd raw index of the brick
+            /// </summary>
+            public Vector2Int GridPosition;
+            public int Health;
+        }
     }
 }
