@@ -1,6 +1,6 @@
 ﻿namespace Arkanoid.Bricks
 {
-    public class BricksFactory 
+    public class BricksFactory
     {
         
     }
