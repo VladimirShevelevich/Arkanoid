@@ -1,5 +1,6 @@
 ﻿using System;
 using UniRx;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Arkanoid.Input
@@ -24,7 +25,7 @@ namespace Arkanoid.Input
 
         private void CheckActionInput()
         {
-            if (UnityEngine.Input.GetButtonDown("Jump"))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             {
                 OnActionInput?.Invoke();
             }
