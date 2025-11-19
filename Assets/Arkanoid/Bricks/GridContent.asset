@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05102d1f19c94e2cabd39931ac8aa80a, type: 3}
   m_Name: GridContent
   m_EditorClassIdentifier: 
-  <GridRows>k__BackingField: 6
-  <GridColumns>k__BackingField: 10
-  <GridHorizontalSpace>k__BackingField: 0.1
-  <GridVerticalSpace>k__BackingField: 0.1
-  <GridStartPosition>k__BackingField: {x: 0, y: 0}
+  <GridRows>k__BackingField: 4
+  <GridColumns>k__BackingField: 6
+  <GridHorizontalSpace>k__BackingField: 0.05
+  <GridVerticalSpace>k__BackingField: 0.05
+  <GridStartPosition>k__BackingField: {x: -2.1, y: 3}

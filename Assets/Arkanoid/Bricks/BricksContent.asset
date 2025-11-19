@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2a1581235547e88233dcdcdfab102f, type: 3}
   m_Name: BricksContent
   m_EditorClassIdentifier: 
+  <BrickPrefab>k__BackingField: {fileID: 1694265372327955570, guid: 000709be92e61174290ee57192f616e2, type: 3}
