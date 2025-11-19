@@ -2,14 +2,14 @@
 
 namespace Arkanoid.Level
 {
-    public class LevelCreator : IInitializable, ILevelCreator
+    public class LevelCreatorService : IInitializable, ILevelCreatorService
     {
         private readonly LifetimeScope _gameScope;
         private readonly LevelScope[] _levels;
         private LevelScope _levelScope;
         private int _currentLevelIndex;
 
-        public LevelCreator(LifetimeScope gameScope, LevelsContent levelsContent)
+        public LevelCreatorService(LifetimeScope gameScope, LevelsContent levelsContent)
         {
             _gameScope = gameScope;
             _levels = levelsContent.Levels;

@@ -1,6 +1,6 @@
 namespace Arkanoid.Level
 {
-    public interface ILevelCreator
+    public interface ILevelCreatorService
     {
         void ReloadLevel();
         void LoadNextLevel();

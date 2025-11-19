@@ -15,7 +15,7 @@ namespace Arkanoid
             _contentHolder.Register(builder);
             builder.UseEntryPoints(ep =>
             {
-                ep.Add<LevelCreator>();
+                ep.Add<LevelCreatorService>();
             });
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Arkanoid.Platform;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -11,6 +12,7 @@ namespace Arkanoid.Level
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_levelConfig);
+            PlatformInstaller.Install(builder);
         }
     }
 }
