@@ -1,19 +1,30 @@
-﻿using VContainer.Unity;
+﻿using Arkanoid.Level;
+using VContainer.Unity;
 
 namespace Arkanoid.Bricks
 {
     public class BricksService : IInitializable
     {
-        private readonly GridCreator _gridCreator;
+        private readonly BricksFactory _bricksFactory;
+        private readonly LevelConfig _levelConfig;
 
-        public BricksService(GridCreator gridCreator)
+        public BricksService(BricksFactory bricksFactory, LevelConfig levelConfig)
         {
-            _gridCreator = gridCreator;
+            _bricksFactory = bricksFactory;
+            _levelConfig = levelConfig;
         }
         
         public void Initialize()
         {
-            _gridCreator.Create();
+            SpawnBricks();
+        }
+
+        private void SpawnBricks()
+        {
+            foreach (var brickGridPos in _levelConfig.BricksGridPositions)
+            {
+                _bricksFactory.Create(brickGridPos);
+            }
         }
     }
 }

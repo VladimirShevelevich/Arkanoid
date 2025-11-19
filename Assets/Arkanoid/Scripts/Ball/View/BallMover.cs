@@ -25,6 +25,11 @@ namespace Arkanoid.Ball.View
             _inputService.OnActionInput += OnActionInput;
         }
 
+        private void OnDestroy()
+        {
+            _inputService.OnActionInput -= OnActionInput;
+        }
+
         private void OnActionInput()
         {
             if (_moving)

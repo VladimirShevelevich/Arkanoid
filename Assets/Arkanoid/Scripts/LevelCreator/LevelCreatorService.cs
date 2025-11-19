@@ -1,11 +1,12 @@
-﻿using VContainer.Unity;
+﻿using VContainer;
+using VContainer.Unity;
 
 namespace Arkanoid.Level
 {
     public class LevelCreatorService : IInitializable, ILevelCreatorService
     {
         private readonly LifetimeScope _gameScope;
-        private readonly LevelScope[] _levels;
+        private readonly LevelConfig[] _levels;
         private LevelScope _levelScope;
         private int _currentLevelIndex;
 
@@ -34,8 +35,11 @@ namespace Arkanoid.Level
         private void CreateLevelByCurrentIndex()
         {
             _levelScope?.Dispose();
-            var levelPrefab = _levels[_currentLevelIndex % _levels.Length];
-            _levelScope = _gameScope.CreateChildFromPrefab(levelPrefab);
+            LevelConfig levelConfig = _levels[_currentLevelIndex % _levels.Length];
+            _levelScope = _gameScope.CreateChild<LevelScope>(builder =>
+            {
+                builder.RegisterInstance(levelConfig);
+            });
         }
     }
 }

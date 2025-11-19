@@ -8,7 +8,6 @@ namespace Arkanoid.Bricks
         public static void Install(IContainerBuilder builder)
         {
             builder.Register<BricksFactory>(Lifetime.Scoped);
-            builder.Register<GridCreator>(Lifetime.Scoped);
             builder.UseEntryPoints(ep =>
             {
                 ep.Add<BricksService>();
