@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using Arkanoid.Level;
+using VContainer;
 using VContainer.Unity;
 
 namespace Arkanoid
@@ -7,7 +8,10 @@ namespace Arkanoid
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            
+            builder.UseEntryPoints(ep =>
+            {
+                ep.Add<LevelCreator>();
+            });
         }
     }
 }
