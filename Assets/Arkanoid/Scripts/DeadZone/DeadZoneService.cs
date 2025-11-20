@@ -3,7 +3,7 @@ using VContainer.Unity;
 
 namespace Arkanoid.DeadZone
 {
-    public class DeadZoneService : IInitializable
+    public class DeadZoneService : IInitializable, IDeadZoneService
     {
         public event Action OnDeadTriggered;
         
