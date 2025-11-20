@@ -1,6 +1,7 @@
 ﻿using Arkanoid.Content;
 using Arkanoid.Input;
 using Arkanoid.Level;
+using Arkanoid.Popups;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -16,6 +17,7 @@ namespace Arkanoid
             _contentHolder.Register(builder);
             InputInstaller.Install(builder);
             LevelCreatorInstaller.Install(builder);
+            PopupsInstaller.Install(builder);
         }
     }
 }

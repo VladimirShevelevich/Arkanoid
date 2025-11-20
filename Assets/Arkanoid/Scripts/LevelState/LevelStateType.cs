@@ -5,6 +5,6 @@
         None = 0,
         GamePlay = 1,
         Win = 2,
-        GameOver = 3
+        GameOver = 3,
     }
 }
