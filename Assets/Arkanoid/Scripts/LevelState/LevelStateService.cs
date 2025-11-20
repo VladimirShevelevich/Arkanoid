@@ -1,10 +1,12 @@
 ﻿using Arkanoid.DeadZone;
 using UniRx;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace Arkanoid.LevelState
 {
+    /// <summary>
+    /// managing "win" and "game over" states of the game
+    /// </summary>
     public class LevelStateService : IInitializable, ILevelStateService
     {
         public IReadOnlyReactiveProperty<LevelStateType> CurrentState => _currentState;
@@ -20,11 +22,17 @@ namespace Arkanoid.LevelState
         public void Initialize()
         {
             _deadZoneService.OnDeadTriggered += SetGameOverState;
+            SetGamePlayState();
+        }
+
+        private void SetGamePlayState()
+        {
+            _currentState.Value = LevelStateType.GamePlay;
         }
 
         private void SetGameOverState()
         {
-            Debug.Log("GameOver");
+            _currentState.Value = LevelStateType.GameOver;
         }
         
         private void SetWinState()

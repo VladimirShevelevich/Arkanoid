@@ -3,7 +3,8 @@
     public enum LevelStateType
     {
         None = 0,
-        Win = 1,
-        GameOver = 2
+        GamePlay = 1,
+        Win = 2,
+        GameOver = 3
     }
 }

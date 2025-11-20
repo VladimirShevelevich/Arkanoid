@@ -1,4 +1,5 @@
 ﻿using Arkanoid.Input;
+using Arkanoid.LevelState;
 using UnityEngine;
 using VContainer;
 
@@ -10,12 +11,14 @@ namespace Arkanoid.Platform
         
         private PlatformContent _platformContent;
         private IInputService _inputService;
+        private ILevelStateService _levelStateService;
 
         [Inject]
-        public void Construct(PlatformContent platformContent, IInputService inputService)
+        public void Construct(PlatformContent platformContent, IInputService inputService, ILevelStateService levelStateService)
         {
             _platformContent = platformContent;
             _inputService = inputService;
+            _levelStateService = levelStateService;
         }
         
         private float CurrentInput => _inputService.HorizontalInput.Value;
@@ -27,7 +30,10 @@ namespace Arkanoid.Platform
 
         private void Move()
         {
-            var move = CurrentInput * _platformContent.Speed;
+            float move = _levelStateService.CurrentState.Value == LevelStateType.GamePlay ? 
+                CurrentInput * _platformContent.Speed : 
+                0;
+            
             _rb.velocity = new Vector2(move, _rb.velocity.y);
         }
     }
