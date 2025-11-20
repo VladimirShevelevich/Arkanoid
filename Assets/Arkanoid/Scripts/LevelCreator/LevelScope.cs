@@ -1,8 +1,8 @@
 ﻿using Arkanoid.Ball;
 using Arkanoid.Bricks;
+using Arkanoid.DeadZone;
 using Arkanoid.Environment;
 using Arkanoid.Platform;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -16,6 +16,7 @@ namespace Arkanoid.Level
             PlatformInstaller.Install(builder);
             BallInstaller.Install(builder);
             BricksInstaller.Install(builder);
+            DeadZoneInstaller.Install(builder);
         }
     }
 }
