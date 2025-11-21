@@ -400,7 +400,6 @@ GameObject:
   - component: {fileID: 1465287945970640111}
   - component: {fileID: 4876572533804186621}
   - component: {fileID: 7441018606393971812}
-  - component: {fileID: 4192416641002618067}
   - component: {fileID: 335695979318565171}
   m_Layer: 5
   m_Name: WinPopup
@@ -468,19 +467,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4192416641002618067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937186994208540841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f19029e58f47e3bc17d87ef5927625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _restartButton: {fileID: 5244677688550150682}
 --- !u!114 &335695979318565171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,4 +479,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40a3e2b6e3840a4a53bdfb01ee03051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextLevelButton: {fileID: 0}
+  _nextLevelButton: {fileID: 5244677688550150682}

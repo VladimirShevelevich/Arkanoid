@@ -19,7 +19,10 @@ namespace Arkanoid.LevelState
         private static void RegisterPopups(IContainerBuilder builder)
         {
             builder.Register<GameOverPopupFactory>(Lifetime.Singleton).AsSelf();
-            builder.Register<GameOverPopupPresenter>(Lifetime.Transient).AsSelf();
+            builder.Register<GameOverPopupPresenter>(Lifetime.Singleton).AsSelf();
+            
+            builder.Register<WinPopupFactory>(Lifetime.Singleton).AsSelf();
+            builder.Register<WinPopupPresenter>(Lifetime.Transient).AsSelf();
         }
 
         private static void RegisterStates(IContainerBuilder builder)
