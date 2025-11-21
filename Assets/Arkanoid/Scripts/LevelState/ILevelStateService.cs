@@ -1,9 +1,11 @@
-﻿using UniRx;
+﻿using System;
+using Arkanoid.LevelState.States;
+using UniRx;
 
 namespace Arkanoid.LevelState
 {
     public interface ILevelStateService
     {
-        IReadOnlyReactiveProperty<LevelStateType> CurrentState { get; }
+        IReadOnlyReactiveProperty<Type> CurrentState { get; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Arkanoid.Bricks;
-using Arkanoid.DeadZone;
-using Arkanoid.Popups;
+﻿using System;
+using Arkanoid.LevelState.States;
 using UniRx;
+using VContainer;
 using VContainer.Unity;
 
 namespace Arkanoid.LevelState
@@ -11,49 +11,35 @@ namespace Arkanoid.LevelState
     /// </summary>
     public class LevelStateService : IInitializable, ILevelStateService
     {
-        public IReadOnlyReactiveProperty<LevelStateType> CurrentState => _currentState;
-        private readonly ReactiveProperty<LevelStateType> _currentState = new();
-        
-        private readonly IDeadZoneService _deadZoneService;
-        private readonly IBricksService _bricksService;
-        private readonly IPopupsService _popupsService;
+        public IReadOnlyReactiveProperty<Type> CurrentState => _currentStateProperty;
+        private readonly ReactiveProperty<Type> _currentStateProperty = new();
 
-        private int _bricksLeft;
+        private readonly IObjectResolver _objectResolver;
+        private ILevelState _currentState;
 
-        public LevelStateService(IDeadZoneService deadZoneService, IBricksService bricksService, IPopupsService popupsService)
+        public LevelStateService(IObjectResolver objectResolver)
         {
-            _deadZoneService = deadZoneService;
-            _bricksService = bricksService;
-            _popupsService = popupsService;
+            _objectResolver = objectResolver;
         }
         
         public void Initialize()
         {
-            _deadZoneService.OnDeadTriggered += SetGameOverState;
-            _bricksService.OnBrickDestroyed += OnBrickDestroyed;
+            SetInitialState();
+        }
+
+        private void SetInitialState()
+        {
+            SetState(typeof(GameplayState));
+        }
+
+        private void SetState(Type stateType)
+        {
+            _currentState?.Dispose();
+            _currentState = _objectResolver.Resolve(stateType) as ILevelState;
+            _currentState.SetState += SetState;
+            _currentState.Init();
             
-            SetGamePlayState();
+            _currentStateProperty.Value = stateType;
         }
-
-        private void SetGamePlayState()
-        {
-            _currentState.Value = LevelStateType.GamePlay;
-        }
-
-        private void SetGameOverState()
-        {
-            _currentState.Value = LevelStateType.GameOver;
-            _popupsService.ShopPopup<GameOverPopupFactory>();
-        }
-
-        private void SetWinState()
-        {
-            
-        }
-
-        private void OnBrickDestroyed()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+   }
 }

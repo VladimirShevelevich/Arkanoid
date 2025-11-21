@@ -1,5 +1,6 @@
 ﻿using Arkanoid.Input;
 using Arkanoid.LevelState;
+using Arkanoid.LevelState.States;
 using UnityEngine;
 using VContainer;
 
@@ -30,7 +31,7 @@ namespace Arkanoid.Platform
 
         private void Move()
         {
-            float move = _levelStateService.CurrentState.Value == LevelStateType.GamePlay ? 
+            float move = _levelStateService.CurrentState.Value == typeof(GameplayState) ? 
                 CurrentInput * _platformContent.Speed : 
                 0;
             
