@@ -11,6 +11,13 @@ namespace Arkanoid.LevelState
             {
                 ep.Add<LevelStateService>();
             });
+            RegisterPopups(builder);
+        }
+
+        private static void RegisterPopups(IContainerBuilder builder)
+        {
+            builder.Register<GameOverPopupFactory>(Lifetime.Singleton).AsSelf();
+            builder.Register<GameOverPopupPresenter>(Lifetime.Transient).AsSelf();
         }
     }
 }

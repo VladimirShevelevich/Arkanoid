@@ -6,7 +6,7 @@ namespace Arkanoid.Popups
     {
         public static void Install(IContainerBuilder builder)
         {
-            builder.Register<PopupsService>(Lifetime.Singleton);
+            builder.Register<PopupsService>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }

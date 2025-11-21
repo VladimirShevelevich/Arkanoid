@@ -4,6 +4,7 @@ using Arkanoid.DeadZone;
 using Arkanoid.Environment;
 using Arkanoid.LevelState;
 using Arkanoid.Platform;
+using Arkanoid.Popups;
 using VContainer;
 using VContainer.Unity;
 
@@ -19,6 +20,7 @@ namespace Arkanoid.Level
             BricksInstaller.Install(builder);
             DeadZoneInstaller.Install(builder);
             LevelStateInstaller.Install(builder);
+            PopupsInstaller.Install(builder);
         }
     }
 }

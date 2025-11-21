@@ -1,4 +1,5 @@
 ﻿using Arkanoid.DeadZone;
+using Arkanoid.Popups;
 using UniRx;
 using VContainer.Unity;
 
@@ -13,10 +14,12 @@ namespace Arkanoid.LevelState
         private readonly ReactiveProperty<LevelStateType> _currentState = new();
         
         private readonly IDeadZoneService _deadZoneService;
+        private readonly IPopupsService _popupsService;
 
-        public LevelStateService(IDeadZoneService deadZoneService)
+        public LevelStateService(IDeadZoneService deadZoneService, IPopupsService popupsService)
         {
             _deadZoneService = deadZoneService;
+            _popupsService = popupsService;
         }
         
         public void Initialize()
@@ -33,6 +36,7 @@ namespace Arkanoid.LevelState
         private void SetGameOverState()
         {
             _currentState.Value = LevelStateType.GameOver;
+            _popupsService.ShopPopup<GameOverPopupFactory>();
         }
         
         private void SetWinState()
