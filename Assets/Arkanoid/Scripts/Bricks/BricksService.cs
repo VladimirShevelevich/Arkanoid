@@ -1,10 +1,13 @@
-﻿using Arkanoid.Level;
+﻿using System;
+using Arkanoid.Level;
 using VContainer.Unity;
 
 namespace Arkanoid.Bricks
 {
-    public class BricksService : IInitializable
+    public class BricksService : IInitializable, IBricksService
     {
+        public event Action OnBrickDestroyed;
+        
         private readonly BricksFactory _bricksFactory;
         private readonly LevelConfig _levelConfig;
 
@@ -23,7 +26,8 @@ namespace Arkanoid.Bricks
         {
             foreach (var brickInfo in _levelConfig.Bricks)   
             {
-                _bricksFactory.Create(brickInfo);
+                IBrick brick = _bricksFactory.Create(brickInfo);
+                brick.OnDestroyed += () => OnBrickDestroyed?.Invoke();
             }
         }
     }

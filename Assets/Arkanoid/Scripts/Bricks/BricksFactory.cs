@@ -18,7 +18,7 @@ namespace Arkanoid.Bricks
             _objectResolver = objectResolver;
         }
         
-        public void Create(LevelConfig.BrickInfo brickInfo)
+        public IBrick Create(LevelConfig.BrickInfo brickInfo)
         {
             BrickView view = Object.Instantiate(_bricksContent.BrickPrefab);
             Vector2 brickSize = view.GetComponent<SpriteRenderer>().bounds.size;
@@ -28,6 +28,8 @@ namespace Arkanoid.Bricks
             
             _objectResolver.InjectGameObject(view.gameObject);
             health.Init();
+
+            return new Brick(health, view);
         }
 
         private BrickHealth CreateHealth(int initialHealth, BrickView view)
