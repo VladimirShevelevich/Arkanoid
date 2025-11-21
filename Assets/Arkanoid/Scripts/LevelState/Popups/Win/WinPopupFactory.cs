@@ -19,7 +19,7 @@ namespace Arkanoid.LevelState
         {
             WinPopupView view = InstantiateView(_levelStateContent.WinPopupPrefab);
             WinPopupPresenter presenter = CreatePresenter(view);
-            return presenter;
+            return new WinPopup(presenter, view);
         }
 
         private WinPopupPresenter CreatePresenter(WinPopupView view)

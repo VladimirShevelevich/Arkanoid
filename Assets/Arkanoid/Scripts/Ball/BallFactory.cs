@@ -18,11 +18,12 @@ namespace Arkanoid.Ball
             _objectResolver = objectResolver;
         }
         
-        public void Create()
+        public GameObject Create()
         {
             GameObject go = Object.Instantiate(_ballContent.BallPrefab);
             _objectResolver.InjectGameObject(go);
             go.transform.parent = _platformService.PlatformTransform;
+            return go;
         }
     }
 }

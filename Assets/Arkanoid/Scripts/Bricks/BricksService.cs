@@ -1,10 +1,11 @@
 ﻿using System;
 using Arkanoid.Level;
+using Arkanoid.Tools.Disposable;
 using VContainer.Unity;
 
 namespace Arkanoid.Bricks
 {
-    public class BricksService : IInitializable, IBricksService
+    public class BricksService : BaseDisposable, IInitializable, IBricksService
     {
         public event Action OnBrickDestroyed;
         
@@ -27,6 +28,7 @@ namespace Arkanoid.Bricks
             foreach (var brickInfo in _levelConfig.Bricks)   
             {
                 IBrick brick = _bricksFactory.Create(brickInfo);
+                AddDisposable(brick);
                 brick.OnDestroyed += () => OnBrickDestroyed?.Invoke();
             }
         }

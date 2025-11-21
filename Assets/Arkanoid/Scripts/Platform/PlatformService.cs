@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Arkanoid.Tools.Disposable;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Arkanoid.Platform
 {
-    public class PlatformService : IInitializable, IPlatformService
+    public class PlatformService : BaseDisposable, IInitializable, IPlatformService
     {
         private readonly PlatformFactory _platformFactory;
         private GameObject _view;
@@ -18,6 +19,7 @@ namespace Arkanoid.Platform
         public void Initialize()
         {
             _view = _platformFactory.Create();
+            AddDisposable(new GameObjectDisposer(_view.gameObject));
         }
     }
 }

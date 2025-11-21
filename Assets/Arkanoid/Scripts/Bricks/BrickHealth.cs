@@ -2,7 +2,7 @@
 
 namespace Arkanoid.Bricks
 {
-    public class BrickHealth
+    public class BrickHealth : IDisposable
     {
         public event Action OnDestroyed;
         
@@ -33,6 +33,12 @@ namespace Arkanoid.Bricks
             {
                 _view.UpdateViewByHealth(_currentHealth);
             }
+        }
+
+
+        public void Dispose()
+        {
+            _view.OnHit -= OnBrickHit;
         }
     }
 }

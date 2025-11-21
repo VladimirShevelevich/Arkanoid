@@ -1,8 +1,9 @@
-﻿using VContainer.Unity;
+﻿using Arkanoid.Tools.Disposable;
+using VContainer.Unity;
 
 namespace Arkanoid.Ball
 {
-    public class BallService : IInitializable
+    public class BallService : BaseDisposable, IInitializable
     {
         private readonly BallFactory _ballFactory;
 
@@ -18,7 +19,8 @@ namespace Arkanoid.Ball
 
         private void CreateBall()
         {
-            _ballFactory.Create();
+            var go = _ballFactory.Create();
+            AddDisposable(new GameObjectDisposer(go));
         }
     }
 }

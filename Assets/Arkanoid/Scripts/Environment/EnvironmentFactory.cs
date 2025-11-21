@@ -1,9 +1,10 @@
+using Arkanoid.Tools.Disposable;
 using UnityEngine;
 using VContainer.Unity;
 
 namespace Arkanoid.Environment
 {
-    public class EnvironmentFactory : IInitializable
+    public class EnvironmentFactory : BaseDisposable, IInitializable
     {
         private readonly EnvironmentContent _content;
 
@@ -19,7 +20,8 @@ namespace Arkanoid.Environment
 
         private void Create()
         {
-            Object.Instantiate(_content.EnvironmentPrefab);
+            var go = Object.Instantiate(_content.EnvironmentPrefab);
+            AddDisposable(new GameObjectDisposer(go));
         }
     }
 }

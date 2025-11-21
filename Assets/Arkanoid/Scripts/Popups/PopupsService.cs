@@ -1,8 +1,9 @@
-﻿using VContainer;
+﻿using Arkanoid.Tools.Disposable;
+using VContainer;
 
 namespace Arkanoid.Popups
 {
-    public class PopupsService : IPopupsService
+    public class PopupsService : BaseDisposable, IPopupsService
     {
         private readonly IObjectResolver _objectResolver;
 
@@ -15,6 +16,7 @@ namespace Arkanoid.Popups
         {
             TFactory factory = _objectResolver.Resolve<TFactory>();
             IPopup popup = factory.Create();
+            AddDisposable(popup);
         }
     }
 }

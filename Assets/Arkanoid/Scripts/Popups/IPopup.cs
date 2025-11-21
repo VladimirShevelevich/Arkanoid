@@ -1,6 +1,8 @@
-﻿namespace Arkanoid.Popups
+﻿using System;
+
+namespace Arkanoid.Popups
 {
-    public interface IPopup
+    public interface IPopup : IDisposable
     {
         
     }

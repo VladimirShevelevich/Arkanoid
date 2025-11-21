@@ -1,11 +1,12 @@
-﻿using Arkanoid.Level;
-using Arkanoid.Popups;
+﻿using System;
+using Arkanoid.Level;
 
 namespace Arkanoid.LevelState
 {
-    public class GameOverPopupPresenter : IPopup
+    public class GameOverPopupPresenter : IDisposable
     {
         private readonly ILevelCreatorService _levelCreatorService;
+        private GameOverPopupView _view;
 
         public GameOverPopupPresenter(ILevelCreatorService levelCreatorService)
         {
@@ -14,12 +15,18 @@ namespace Arkanoid.LevelState
         
         public void BindView(GameOverPopupView view)
         {
-            view.OnRestartClick += OnRestartClick;
+            _view = view;
+            _view.OnRestartClick += OnRestartClick;
         }
 
         private void OnRestartClick()
         {
             _levelCreatorService.ReloadLevel();
+        }
+
+        public void Dispose()
+        {
+            _view.OnRestartClick -= OnRestartClick;
         }
     }
 }

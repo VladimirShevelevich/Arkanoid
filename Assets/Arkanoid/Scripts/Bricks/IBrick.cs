@@ -2,7 +2,7 @@
 
 namespace Arkanoid.Bricks
 {
-    public interface IBrick
+    public interface IBrick : IDisposable
     {
         event Action OnDestroyed;
     }

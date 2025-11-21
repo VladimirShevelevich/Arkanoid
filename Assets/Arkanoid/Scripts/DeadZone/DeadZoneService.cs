@@ -1,9 +1,10 @@
 ﻿using System;
+using Arkanoid.Tools.Disposable;
 using VContainer.Unity;
 
 namespace Arkanoid.DeadZone
 {
-    public class DeadZoneService : IInitializable, IDeadZoneService
+    public class DeadZoneService : BaseDisposable, IInitializable, IDeadZoneService
     {
         public event Action OnDeadTriggered;
         
@@ -26,6 +27,7 @@ namespace Arkanoid.DeadZone
             {
                 OnDeadTriggered?.Invoke();
             };
+            AddDisposable(new GameObjectDisposer(view.gameObject));
         }
     }
 }

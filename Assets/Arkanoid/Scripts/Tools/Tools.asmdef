@@ -1,9 +1,8 @@
 {
-    "name": "Popups",
+    "name": "Tools",
     "rootNamespace": "",
     "references": [
-        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
-        "GUID:5a4c9453118b8fc409b73aba0705dc94"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

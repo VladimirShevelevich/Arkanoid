@@ -19,7 +19,7 @@ namespace Arkanoid.LevelState
         {
             GameOverPopupView view = InstantiateView(_levelStateContent.GameOverPopupPrefab);
             GameOverPopupPresenter presenter = CreatePresenter(view);
-            return presenter;
+            return new GameOverPopup(presenter, view);
         }
 
         private GameOverPopupPresenter CreatePresenter(GameOverPopupView view)
