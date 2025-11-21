@@ -37,14 +37,6 @@ MonoBehaviour:
     Health: 3
   - GridPosition: {x: 3, y: 2}
     Health: 1
-  - GridPosition: {x: 1, y: 3}
-    Health: 1
-  - GridPosition: {x: 2, y: 3}
-    Health: 2
-  - GridPosition: {x: 3, y: 3}
-    Health: 1
-  - GridPosition: {x: 4, y: 3}
-    Health: 1
   - GridPosition: {x: 0, y: 4}
     Health: 1
   - GridPosition: {x: 1, y: 4}
