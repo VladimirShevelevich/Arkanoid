@@ -1,6 +1,7 @@
 ﻿using Arkanoid.Borders;
 using Arkanoid.Input;
 using Arkanoid.LevelState;
+using Arkanoid.LevelState.States;
 using UnityEngine;
 using VContainer;
 
@@ -56,11 +57,14 @@ namespace Arkanoid.Platform
 
         private void Move()
         {
+            if (_levelStateService.CurrentState.Value != typeof(GameplayState))
+                return;
+            
             float move = CurrentInput * _platformContent.Speed * Time.fixedDeltaTime;
             Vector2 newPos = _rb.position + new Vector2(move, 0);
             newPos.x = Mathf.Clamp(newPos.x, _minX, _maxX);
 
-            _rb.MovePosition(newPos);
+            _rb.position = newPos;
         }
     }
 }

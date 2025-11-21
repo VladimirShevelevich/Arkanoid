@@ -28,6 +28,7 @@ namespace Arkanoid.Bricks
         {
             GameObject parent = new GameObject("Bricks");
             AddDisposable(new GameObjectDisposer(parent));
+            
             foreach (var brickInfo in _levelConfig.Bricks)   
             {
                 IBrick brick = _bricksFactory.Create(brickInfo, parent.transform);

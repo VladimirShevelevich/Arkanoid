@@ -8,7 +8,7 @@ namespace Arkanoid.Ball
     {
         [field: SerializeField] public GameObject BallPrefab { get; private set; } = null;
         [field: SerializeField] public float Speed { get; private set; } = 4;
-        [field: SerializeField] public float InitialAngle { get; private set; } = 45;
         [field: SerializeField] public int MinBounceAngle { get; private set; } = 15;
+        [field: SerializeField] public LayerMask PlatformLayer { get; private set; }
     }
 }

@@ -11,6 +11,8 @@ namespace Arkanoid.Bricks
         private readonly GridContent _gridContent;
         private readonly IObjectResolver _objectResolver;
 
+        private Vector2 _brickSize;
+
         public BricksFactory(BricksContent bricksContent, GridContent gridContent, IObjectResolver objectResolver)
         {
             _bricksContent = bricksContent;
@@ -21,8 +23,12 @@ namespace Arkanoid.Bricks
         public IBrick Create(LevelConfig.BrickInfo brickInfo, Transform parent)
         {
             BrickView view = Object.Instantiate(_bricksContent.BrickPrefab, parent);
-            Vector2 brickSize = view.GetComponent<SpriteRenderer>().bounds.size;
-            Vector2 pos = GetPosition(brickSize, brickInfo.GridPosition);
+            if (_brickSize == default)
+            {
+                _brickSize = view.GetComponent<SpriteRenderer>().bounds.size;
+            }
+            
+            Vector2 pos = GetPosition(_brickSize, brickInfo.GridPosition);
             view.transform.position = pos;
             BrickHealth health = CreateHealth(brickInfo.Health, view);
             

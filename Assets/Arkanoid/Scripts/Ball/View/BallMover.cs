@@ -37,6 +37,31 @@ namespace Arkanoid.Ball.View
                 StabilizeAngle();
             }
         }
+        
+        private void OnCollisionEnter2D(Collision2D hitCollision)
+        {
+            if (IsPlatformLayer(hitCollision))
+                ApplyPlatformHitAngle(hitCollision);
+        }
+
+        private void ApplyPlatformHitAngle(Collision2D collision)
+        {
+            Vector3 hitPoint = collision.GetContact(0).point;
+            float paddleCenter = collision.transform.position.x;
+
+            // difference between hit point and paddle center (-1 to +1)
+            float direction = hitPoint.x - paddleCenter;
+
+            // new direction for ball
+            Vector2 newVelocity = new Vector2(direction, 1).normalized * _ballContent.Speed;
+            _rb.velocity = newVelocity;
+        }
+
+        private bool IsPlatformLayer(Collision2D collision)
+        {
+            return ((1 << collision.gameObject.layer) & _ballContent.PlatformLayer) != 0;
+
+        }
 
         /// <summary>
         /// Prevent "flat" bounces 
@@ -74,7 +99,6 @@ namespace Arkanoid.Ball.View
         {
             //unparenting from the platform and applying velocity
             transform.parent = null;
-            transform.rotation = Quaternion.Euler(Vector3.forward * _ballContent.InitialAngle);
             _rb.bodyType = RigidbodyType2D.Dynamic;
             _rb.velocity = transform.up * _ballContent.Speed;
             _moving = true;

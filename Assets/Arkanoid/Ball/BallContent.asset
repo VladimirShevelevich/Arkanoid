@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BallPrefab>k__BackingField: {fileID: 3107540610333882554, guid: dc900ee2583c5d64fa7cec5e409fbf3e, type: 3}
   <Speed>k__BackingField: 6
-  <InitialAngle>k__BackingField: -45
   <MinBounceAngle>k__BackingField: 20
+  <PlatformLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
