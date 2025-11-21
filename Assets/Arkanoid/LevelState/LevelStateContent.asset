@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LevelStateContent
   m_EditorClassIdentifier: 
   <GameOverPopupPrefab>k__BackingField: {fileID: 8571917906402340103, guid: 593520d995c06ed47859782d9aee6e54, type: 3}
-  <WinPopupPrefab>k__BackingField: {fileID: 335695979318565171, guid: a9f986bd7d6a87d4c98b4ec9cd672f67, type: 3}
+  <WinPopupPrefab>k__BackingField: {fileID: 7934946010710763149, guid: a9f986bd7d6a87d4c98b4ec9cd672f67, type: 3}
