@@ -18,9 +18,9 @@ namespace Arkanoid.Bricks
             _objectResolver = objectResolver;
         }
         
-        public IBrick Create(LevelConfig.BrickInfo brickInfo)
+        public IBrick Create(LevelConfig.BrickInfo brickInfo, Transform parent)
         {
-            BrickView view = Object.Instantiate(_bricksContent.BrickPrefab);
+            BrickView view = Object.Instantiate(_bricksContent.BrickPrefab, parent);
             Vector2 brickSize = view.GetComponent<SpriteRenderer>().bounds.size;
             Vector2 pos = GetPosition(brickSize, brickInfo.GridPosition);
             view.transform.position = pos;

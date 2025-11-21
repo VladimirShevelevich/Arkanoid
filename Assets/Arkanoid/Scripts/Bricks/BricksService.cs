@@ -1,6 +1,7 @@
 ﻿using System;
 using Arkanoid.Level;
 using Arkanoid.Tools.Disposable;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Arkanoid.Bricks
@@ -25,9 +26,11 @@ namespace Arkanoid.Bricks
 
         private void SpawnBricks()
         {
+            GameObject parent = new GameObject("Bricks");
+            AddDisposable(new GameObjectDisposer(parent));
             foreach (var brickInfo in _levelConfig.Bricks)   
             {
-                IBrick brick = _bricksFactory.Create(brickInfo);
+                IBrick brick = _bricksFactory.Create(brickInfo, parent.transform);
                 AddDisposable(brick);
                 brick.OnDestroyed += () => OnBrickDestroyed?.Invoke();
             }
