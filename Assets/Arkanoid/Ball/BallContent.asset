@@ -18,3 +18,7 @@ MonoBehaviour:
   <PlatformLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
+  <CollisionSound>k__BackingField: {fileID: 8300000, guid: 09f8dc09efedc414784e7ba556669245, type: 3}
+  <SoundLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 640

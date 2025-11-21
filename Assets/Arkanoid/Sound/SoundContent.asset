@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787e1709b9514ffba98b4a1dbdacca99, type: 3}
   m_Name: SoundContent
   m_EditorClassIdentifier: 
-  <AudioSource>k__BackingField: {fileID: 0}
+  <AudioSource>k__BackingField: {fileID: 3448848196414608952, guid: a7d44f6f604bb9a48a9cf32ac00a9ff3, type: 3}

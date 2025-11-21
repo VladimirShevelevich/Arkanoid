@@ -10,5 +10,7 @@ namespace Arkanoid.Ball
         [field: SerializeField] public float Speed { get; private set; } = 4;
         [field: SerializeField] public int MinBounceAngle { get; private set; } = 15;
         [field: SerializeField] public LayerMask PlatformLayer { get; private set; }
+        [field: SerializeField] public AudioClip CollisionSound { get; private set; }
+        [field: SerializeField] public LayerMask SoundLayerMask { get; private set; }
     }
 }
