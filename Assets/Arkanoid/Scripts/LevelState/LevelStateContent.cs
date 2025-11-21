@@ -7,5 +7,6 @@ namespace Arkanoid.LevelState
     public class LevelStateContent : BaseContent
     {
         [field: SerializeField] public GameOverPopupView GameOverPopupPrefab { get; private set; }
+        [field: SerializeField] public WinPopupView WinPopupPrefab { get; private set; }
     }
 }

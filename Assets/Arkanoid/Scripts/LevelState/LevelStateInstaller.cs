@@ -26,6 +26,7 @@ namespace Arkanoid.LevelState
         {
             builder.Register<GameplayState>(Lifetime.Transient);
             builder.Register<GameOverState>(Lifetime.Transient);
+            builder.Register<WinState>(Lifetime.Transient);
         }
     }
 }
