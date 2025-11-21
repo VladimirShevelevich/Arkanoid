@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0632e8b7adf47f19cb965dbccc22808, type: 3}
-  m_Name: EnvironmentContent
+  m_Name: BordersContent
   m_EditorClassIdentifier: 
-  <EnvironmentPrefab>k__BackingField: {fileID: 2703579432232545250, guid: b134a646ed960be40ad024d4553b9daa, type: 3}
+  <BordersPrefab>k__BackingField: {fileID: -6088821700442850661, guid: 8c29a2f6c6b00934ab943ed73c87996f, type: 3}

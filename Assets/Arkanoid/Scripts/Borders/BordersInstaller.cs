@@ -1,15 +1,16 @@
 ﻿using VContainer;
 using VContainer.Unity;
 
-namespace Arkanoid.Environment
+namespace Arkanoid.Borders
 {
-    public static class EnvironmentInstaller
+    public static class BordersInstaller
     {
         public static void Install(IContainerBuilder builder)
         {
+            builder.Register<BordersFactory>(Lifetime.Scoped);
             builder.UseEntryPoints(ep =>
             {
-                ep.Add<EnvironmentFactory>();
+                ep.Add<BordersService>();
             });
         }
     }

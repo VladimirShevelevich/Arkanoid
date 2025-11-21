@@ -1,5 +1,4 @@
-﻿using System;
-using Arkanoid.Input;
+﻿using Arkanoid.Input;
 using UnityEngine;
 using VContainer;
 
@@ -30,6 +29,37 @@ namespace Arkanoid.Ball.View
             _inputService.OnActionInput -= OnActionInput;
         }
 
+        private void FixedUpdate()
+        {
+            if (_moving)
+            {
+                StabilizeVelocity();
+                StabilizeAngle();
+            }
+        }
+
+        /// <summary>
+        /// Prevent "flat" bounces 
+        /// </summary>
+        private void StabilizeAngle()
+        {
+            Vector2 velocity = _rb.velocity;
+            float angle = Vector2.Angle(velocity, Vector2.up);
+            if (angle < _ballContent.MinBounceAngle || angle > 180 - _ballContent.MinBounceAngle)
+            {
+                velocity.x += 0.2f * Mathf.Sign(velocity.x == 0 ? 1 : velocity.x);
+            }
+            _rb.velocity = velocity.normalized * _ballContent.Speed;
+        }
+
+        /// <summary>
+        /// Prevent speed slow
+        /// </summary>
+        private void StabilizeVelocity()
+        {
+            _rb.velocity = _rb.velocity.normalized * _ballContent.Speed;
+        }
+
         private void OnActionInput()
         {
             if (_moving)
@@ -37,12 +67,12 @@ namespace Arkanoid.Ball.View
                 return;
             }
             
-            Move();
+            StartMoving();
         }
 
-        private void Move()
+        private void StartMoving()
         {
-            //unparenting of the platform and applying velocity
+            //unparenting from the platform and applying velocity
             transform.parent = null;
             transform.rotation = Quaternion.Euler(Vector3.forward * _ballContent.InitialAngle);
             _rb.bodyType = RigidbodyType2D.Dynamic;

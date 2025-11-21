@@ -1,7 +1,7 @@
 ﻿using Arkanoid.Ball;
+using Arkanoid.Borders;
 using Arkanoid.Bricks;
 using Arkanoid.DeadZone;
-using Arkanoid.Environment;
 using Arkanoid.LevelState;
 using Arkanoid.Platform;
 using Arkanoid.Popups;
@@ -14,7 +14,7 @@ namespace Arkanoid.Level
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            EnvironmentInstaller.Install(builder);
+            BordersInstaller.Install(builder);
             PlatformInstaller.Install(builder);
             BallInstaller.Install(builder);
             BricksInstaller.Install(builder);
