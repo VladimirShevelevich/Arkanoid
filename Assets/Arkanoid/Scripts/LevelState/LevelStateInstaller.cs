@@ -14,6 +14,7 @@ namespace Arkanoid.LevelState
             });
             RegisterPopups(builder);
             RegisterStates(builder);
+            RegisterWinCondition(builder);
         }
 
         private static void RegisterPopups(IContainerBuilder builder)
@@ -30,6 +31,11 @@ namespace Arkanoid.LevelState
             builder.Register<GameplayState>(Lifetime.Transient);
             builder.Register<GameOverState>(Lifetime.Transient);
             builder.Register<WinState>(Lifetime.Transient);
+        }
+
+        private static void RegisterWinCondition(IContainerBuilder containerBuilder)
+        {
+            containerBuilder.Register<IWinCondition, BricksOverWinCondition>(Lifetime.Transient);
         }
     }
 }

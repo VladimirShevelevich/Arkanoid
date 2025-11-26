@@ -7,4 +7,5 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Carkanoid_005Cscripts_005Clevelstate_005Cpopups/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Carkanoid_005Cscripts_005Clevelstate_005Cpopups_005Cgameover/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Carkanoid_005Cscripts_005Clevelstate_005Cpopups_005Cwin/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Carkanoid_005Cscripts_005Clevelstate_005Cstates_005Cwincondition/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Carkanoid_005Cscripts_005Cplatform_005Cview/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

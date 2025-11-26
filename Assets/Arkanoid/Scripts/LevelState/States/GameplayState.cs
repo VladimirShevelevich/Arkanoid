@@ -10,36 +10,19 @@ namespace Arkanoid.LevelState.States
         private readonly IDeadZoneService _deadZoneService;
         private readonly IBricksService _bricksService;
         private readonly LevelConfig _levelConfig;
+        private readonly IWinCondition _winCondition;
         public event Action<Type> SetState;
-
-        private int _bricksLeft;
         
-        public GameplayState(IDeadZoneService deadZoneService, IBricksService bricksService, LevelConfig levelConfig)
+        public GameplayState(IDeadZoneService deadZoneService, IWinCondition winCondition)
         {
             _deadZoneService = deadZoneService;
-            _bricksService = bricksService;
-            _levelConfig = levelConfig;
+            _winCondition = winCondition;
         }
 
         public void Init()
         {
             _deadZoneService.OnDeadTriggered += OnDeadZoneTriggered;
-            _bricksService.OnBrickDestroyed += OnBrickDestroyed;
-            _bricksLeft = _levelConfig.Bricks.Length;
-        }
-
-        private void OnBrickDestroyed()
-        {
-            _bricksLeft--;
-            if (_bricksLeft <= 0)
-            {
-                OnBricksOver();
-            }
-        }
-
-        private void OnBricksOver()
-        {
-            SetState?.Invoke(typeof(WinState));
+            _winCondition.OnWin += OnWin;
         }
 
         private void OnDeadZoneTriggered()
@@ -47,10 +30,15 @@ namespace Arkanoid.LevelState.States
             SetState?.Invoke(typeof(GameOverState));            
         }
 
+        private void OnWin()
+        {
+            SetState.Invoke(typeof(WinState));   
+        }
+
         public void Dispose()
         {
             _deadZoneService.OnDeadTriggered -= OnDeadZoneTriggered;
-            _bricksService.OnBrickDestroyed -= OnBrickDestroyed;
+            _winCondition.OnWin -= OnWin;
         }
     }
 }
