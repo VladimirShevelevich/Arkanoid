@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc90895207542f2a9c9d149aec3d3d5, type: 3}
   m_Name: HudContent
   m_EditorClassIdentifier: 
-  <HudPrefab>k__BackingField: {fileID: 0}
+  <HudPrefab>k__BackingField: {fileID: 4278448407949430130, guid: 8e12aab9ea217f34e8fdc8bd22b9d730, type: 3}

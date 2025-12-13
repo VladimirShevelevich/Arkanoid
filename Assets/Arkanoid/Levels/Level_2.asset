@@ -14,34 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Bricks>k__BackingField:
   - GridPosition: {x: 0, y: 0}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 1, y: 0}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 2, y: 0}
-    Health: 3
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 3, y: 0}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 4, y: 0}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 5, y: 0}
-    Health: 2
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 2, y: 1}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 3, y: 1}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 4, y: 1}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 3, y: 2}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 2, y: 3}
-    Health: 2
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 3, y: 3}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 0, y: 4}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 1, y: 4}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 2, y: 4}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
   - GridPosition: {x: 4, y: 4}
-    Health: 1
+    StartHealth: 1
+    ScoreReward: 1
