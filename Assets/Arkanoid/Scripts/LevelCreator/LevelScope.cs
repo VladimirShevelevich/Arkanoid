@@ -2,6 +2,7 @@
 using Arkanoid.Borders;
 using Arkanoid.Bricks;
 using Arkanoid.DeadZone;
+using Arkanoid.HUD;
 using Arkanoid.LevelState;
 using Arkanoid.Platform;
 using Arkanoid.Popups;
@@ -23,6 +24,7 @@ namespace Arkanoid.Level
             LevelStateInstaller.Install(builder);
             PopupsInstaller.Install(builder);
             ScoreInstaller.Install(builder);
+            HudInstaller.Install(builder);
         }
     }
 }
