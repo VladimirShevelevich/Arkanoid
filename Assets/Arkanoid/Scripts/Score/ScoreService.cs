@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using Arkanoid.Tools;
+using UniRx;
 
 namespace Arkanoid.Score
 {
@@ -9,7 +10,8 @@ namespace Arkanoid.Score
 
         public void AddScore(int score)
         {
-            throw new System.NotImplementedException();
+            _currentScore.Value += score;
+            CustomLogger.DebugLog($"Score: {_currentScore.Value}");
         }
     }
 }

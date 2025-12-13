@@ -8,7 +8,7 @@ namespace Arkanoid.Bricks
 {
     public class BricksService : BaseDisposable, IInitializable, IBricksService
     {
-        public event Action OnBrickDestroyed;
+        public event Action<LevelConfig.BrickInfo> OnBrickDestroyed;
         
         private readonly BricksFactory _bricksFactory;
         private readonly LevelConfig _levelConfig;
@@ -33,7 +33,7 @@ namespace Arkanoid.Bricks
             {
                 IBrick brick = _bricksFactory.Create(brickInfo, parent.transform);
                 AddDisposable(brick);
-                brick.OnDestroyed += () => OnBrickDestroyed?.Invoke();
+                brick.OnDestroyed += brickInfo => OnBrickDestroyed?.Invoke(brickInfo);
             }
         }
     }

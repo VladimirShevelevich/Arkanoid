@@ -6,7 +6,7 @@ namespace Arkanoid.Score
     {
         public static void Install(IContainerBuilder builder)
         {
-            builder.Register<ScoreService>(Lifetime.Scoped);
+            builder.Register<IScoreService, ScoreService>(Lifetime.Scoped);
         }
     }
 }

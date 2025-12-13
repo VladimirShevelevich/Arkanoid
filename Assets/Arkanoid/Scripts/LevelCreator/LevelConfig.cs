@@ -15,7 +15,8 @@ namespace Arkanoid.Level
             /// column amd raw index of the brick
             /// </summary>
             public Vector2Int GridPosition;
-            public int Health;
+            public int StartHealth;
+            public int ScoreReward;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Arkanoid.Bricks
             builder.UseEntryPoints(ep =>
             {
                 ep.Add<BricksService>();
+                ep.Add<BricksScoreCounter>();
             });
         }
     }

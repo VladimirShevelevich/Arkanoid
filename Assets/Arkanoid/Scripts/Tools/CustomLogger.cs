@@ -10,5 +10,12 @@ namespace Arkanoid.Tools
             Debug.Log(log);      
 #endif
         }
+
+        public static void LogError(string log)
+        {
+#if DEBUG
+            Debug.LogError(log);
+#endif
+        }
     }
 }

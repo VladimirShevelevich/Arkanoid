@@ -1,9 +1,10 @@
 using System;
+using Arkanoid.Level;
 
 namespace Arkanoid.Bricks
 {
     public interface IBricksService
     {
-        event Action OnBrickDestroyed;
+        event Action<LevelConfig.BrickInfo> OnBrickDestroyed;
     }
 }

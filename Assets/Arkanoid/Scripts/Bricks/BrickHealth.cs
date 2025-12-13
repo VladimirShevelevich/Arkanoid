@@ -1,4 +1,5 @@
 ﻿using System;
+using Arkanoid.Tools;
 
 namespace Arkanoid.Bricks
 {
@@ -9,9 +10,15 @@ namespace Arkanoid.Bricks
         private readonly BrickView _view;
         private int _currentHealth;
 
-        public BrickHealth(int health, BrickView view)
+        public BrickHealth(int startHealth, BrickView view)
         {
-            _currentHealth = health;
+            if (startHealth <= 0)
+            {
+                CustomLogger.LogError("Brick's starting health must be more than zero");
+                return;
+            }
+            
+            _currentHealth = startHealth;
             _view = view;
         }
 

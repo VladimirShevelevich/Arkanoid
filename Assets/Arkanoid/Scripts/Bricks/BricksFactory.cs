@@ -30,12 +30,12 @@ namespace Arkanoid.Bricks
             
             Vector2 pos = GetPosition(_brickSize, brickInfo.GridPosition);
             view.transform.position = pos;
-            BrickHealth health = CreateHealth(brickInfo.Health, view);
+            BrickHealth health = CreateHealth(brickInfo.StartHealth, view);
             
             _objectResolver.InjectGameObject(view.gameObject);
             health.Init();
 
-            return new Brick(health, view);
+            return new Brick(health, brickInfo, view);
         }
 
         private BrickHealth CreateHealth(int initialHealth, BrickView view)

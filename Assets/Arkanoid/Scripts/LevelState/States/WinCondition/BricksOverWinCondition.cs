@@ -22,7 +22,7 @@ namespace Arkanoid.LevelState.States
             _bricksService.OnBrickDestroyed += OnBrickDestroyed;
         }
 
-        private void OnBrickDestroyed()
+        private void OnBrickDestroyed(LevelConfig.BrickInfo brickInfo)
         {
             _bricksLeft--;
             if (_bricksLeft <= 0)
