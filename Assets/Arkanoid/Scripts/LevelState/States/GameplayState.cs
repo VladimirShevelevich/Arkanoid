@@ -27,7 +27,7 @@ namespace Arkanoid.LevelState.States
 
         private void OnDeadZoneTriggered()
         {
-            SetState?.Invoke(typeof(GameOverState));            
+            SetState?.Invoke(typeof(SecondChanceState));            
         }
 
         private void OnWin()
