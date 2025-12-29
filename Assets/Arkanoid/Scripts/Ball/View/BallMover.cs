@@ -1,5 +1,4 @@
-﻿using Arkanoid.Input;
-using UnityEngine;
+﻿using UnityEngine;
 using VContainer;
 
 namespace Arkanoid.Ball.View
@@ -9,33 +8,22 @@ namespace Arkanoid.Ball.View
         [SerializeField] private Rigidbody2D _rb;
         
         private BallContent _ballContent;
-        private IInputService _inputService;
-        private bool _moving;
 
         [Inject]
-        public void Construct(BallContent ballContent, IInputService inputService)
+        public void Construct(BallContent ballContent)
         {
             _ballContent = ballContent;
-            _inputService = inputService;
         }
 
         private void Start()
         {
-            _inputService.OnActionInput += OnActionInput;
-        }
-
-        private void OnDestroy()
-        {
-            _inputService.OnActionInput -= OnActionInput;
+            StartMoving();
         }
 
         private void FixedUpdate()
         {
-            if (_moving)
-            {
-                StabilizeVelocity();
-                StabilizeAngle();
-            }
+            StabilizeVelocity();
+            StabilizeAngle();
         }
         
         private void OnCollisionEnter2D(Collision2D hitCollision)
@@ -60,7 +48,6 @@ namespace Arkanoid.Ball.View
         private bool IsPlatformLayer(Collision2D collision)
         {
             return ((1 << collision.gameObject.layer) & _ballContent.PlatformLayer) != 0;
-
         }
 
         /// <summary>
@@ -85,23 +72,9 @@ namespace Arkanoid.Ball.View
             _rb.velocity = _rb.velocity.normalized * _ballContent.Speed;
         }
 
-        private void OnActionInput()
-        {
-            if (_moving)
-            {
-                return;
-            }
-            
-            StartMoving();
-        }
-
         private void StartMoving()
         {
-            //unparenting from the platform and applying velocity
-            transform.parent = null;
-            _rb.bodyType = RigidbodyType2D.Dynamic;
             _rb.velocity = transform.up * _ballContent.Speed;
-            _moving = true;
         }
     }
 }
