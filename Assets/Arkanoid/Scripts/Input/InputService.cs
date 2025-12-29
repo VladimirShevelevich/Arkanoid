@@ -9,7 +9,6 @@ namespace Arkanoid.Input
     {
         public IReadOnlyReactiveProperty<float> HorizontalInput => _horizontalInput;
         private readonly ReactiveProperty<float> _horizontalInput = new();
-        public event Action OnActionInput;
         
         private readonly IEnumerable<IInputHandler> _inputHandlers;
 
@@ -29,9 +28,6 @@ namespace Arkanoid.Input
             {
                 inputHandler.HorizontalInput.Subscribe(input => 
                     _horizontalInput.Value = input);
-
-                inputHandler.OnActionInput += 
-                    () => OnActionInput?.Invoke();
             }
         }
     }

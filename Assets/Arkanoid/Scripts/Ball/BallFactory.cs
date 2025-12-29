@@ -8,13 +8,11 @@ namespace Arkanoid.Ball
     public class BallFactory
     {
         private readonly BallContent _ballContent;
-        private readonly IPlatformService _platformService;
         private readonly IObjectResolver _objectResolver;
 
-        public BallFactory(BallContent ballContent, IPlatformService platformService, IObjectResolver objectResolver)
+        public BallFactory(BallContent ballContent, IObjectResolver objectResolver)
         {
             _ballContent = ballContent;
-            _platformService = platformService;
             _objectResolver = objectResolver;
         }
         
@@ -22,7 +20,6 @@ namespace Arkanoid.Ball
         {
             GameObject go = Object.Instantiate(_ballContent.BallPrefab);
             _objectResolver.InjectGameObject(go);
-            go.transform.parent = _platformService.PlatformTransform;
             return go;
         }
     }

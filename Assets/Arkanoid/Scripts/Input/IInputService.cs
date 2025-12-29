@@ -6,6 +6,5 @@ namespace Arkanoid.Input
     public interface IInputService
     {
         IReadOnlyReactiveProperty<float> HorizontalInput { get; }
-        event Action OnActionInput;
     }
 }
