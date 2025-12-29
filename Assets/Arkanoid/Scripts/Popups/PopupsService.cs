@@ -12,7 +12,7 @@ namespace Arkanoid.Popups
             _objectResolver = objectResolver;
         }
         
-        public void ShopPopup<TFactory>() where TFactory : PopupsFactory
+        public void ShowPopup<TFactory>() where TFactory : PopupsFactory
         {
             TFactory factory = _objectResolver.Resolve<TFactory>();
             IPopup popup = factory.Create();

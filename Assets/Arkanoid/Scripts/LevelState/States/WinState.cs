@@ -20,7 +20,7 @@ namespace Arkanoid.LevelState.States
         
         public void Init()
         {
-            _popupsService.ShopPopup<WinPopupFactory>();
+            _popupsService.ShowPopup<WinPopupFactory>();
             _soundService.PlaySound(_levelStateContent.WinSound);
         }
 

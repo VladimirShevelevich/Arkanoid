@@ -21,7 +21,7 @@ namespace Arkanoid.LevelState.States
 
         public void Init()
         {
-            _popupsService.ShopPopup<GameOverPopupFactory>();
+            _popupsService.ShowPopup<GameOverPopupFactory>();
             _soundService.PlaySound(_levelStateContent.GameOverSound);
         }
 

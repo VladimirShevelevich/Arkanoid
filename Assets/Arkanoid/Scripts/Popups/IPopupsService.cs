@@ -3,6 +3,6 @@
     public interface IPopupsService
     {
         /// <typeparam name="TFactory">Popup factory type</typeparam>
-        void ShopPopup<TFactory>() where TFactory : PopupsFactory;
+        void ShowPopup<TFactory>() where TFactory : PopupsFactory;
     }
 }

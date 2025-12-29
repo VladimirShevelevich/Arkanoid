@@ -1,4 +1,5 @@
-﻿using Arkanoid.LevelState.States;
+﻿using Arkanoid.LevelState.SecondChance;
+using Arkanoid.LevelState.States;
 using VContainer;
 using VContainer.Unity;
 
@@ -24,6 +25,9 @@ namespace Arkanoid.LevelState
             
             builder.Register<WinPopupFactory>(Lifetime.Singleton).AsSelf();
             builder.Register<WinPopupPresenter>(Lifetime.Transient).AsSelf();
+            
+            builder.Register<SecondChancePopupFactory>(Lifetime.Singleton).AsSelf();
+            builder.Register<SecondChancePopupPresenter>(Lifetime.Transient).AsSelf();
         }
 
         private static void RegisterStates(IContainerBuilder builder)
