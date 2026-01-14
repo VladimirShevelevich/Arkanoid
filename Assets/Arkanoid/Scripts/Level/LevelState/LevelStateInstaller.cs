@@ -36,6 +36,7 @@ namespace Arkanoid.LevelState
             builder.Register<GameOverState>(Lifetime.Transient);
             builder.Register<WinState>(Lifetime.Transient);
             builder.Register<SecondChanceState>(Lifetime.Transient);
+            builder.Register<LoadingState>(Lifetime.Transient);
         }
 
         private static void RegisterWinCondition(IContainerBuilder containerBuilder)

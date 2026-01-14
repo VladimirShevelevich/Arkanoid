@@ -1,5 +1,4 @@
-﻿using System;
-using Arkanoid.LevelState;
+﻿using Arkanoid.LevelState;
 using Arkanoid.LevelState.States;
 using Arkanoid.Tools.Disposable;
 using UniRx;
@@ -21,7 +20,7 @@ namespace Arkanoid.Ball
             _ballFactory = ballFactory;
             _levelStateService = levelStateService;
         }
-        
+
         public void Initialize()
         {
             AddDisposable(_levelStateService.CurrentState.Subscribe(type =>

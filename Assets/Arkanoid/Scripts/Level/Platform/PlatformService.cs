@@ -1,10 +1,10 @@
 ﻿using Arkanoid.Tools.Disposable;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
-using VContainer.Unity;
 
 namespace Arkanoid.Platform
 {
-    public class PlatformService : BaseDisposable, IInitializable, IPlatformService
+    public class PlatformService : BaseDisposable, IPlatformService
     {
         private readonly PlatformFactory _platformFactory;
         private GameObject _view;
@@ -16,8 +16,11 @@ namespace Arkanoid.Platform
             _platformFactory = platformFactory;
         }
 
-        public void Initialize()
+        public async UniTask InitializeAsync()
         {
+            //simulate async loading
+            await UniTask.Delay(1000);
+            
             _view = _platformFactory.Create();
             AddDisposable(new GameObjectDisposer(_view.gameObject));
         }

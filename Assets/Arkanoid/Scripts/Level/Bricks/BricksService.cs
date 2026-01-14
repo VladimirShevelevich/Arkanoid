@@ -1,12 +1,12 @@
 ﻿using System;
 using Arkanoid.Level;
 using Arkanoid.Tools.Disposable;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
-using VContainer.Unity;
 
 namespace Arkanoid.Bricks
 {
-    public class BricksService : BaseDisposable, IInitializable, IBricksService
+    public class BricksService : BaseDisposable, IBricksService
     {
         public event Action<LevelConfig.BrickInfo> OnBrickDestroyed;
         
@@ -19,13 +19,16 @@ namespace Arkanoid.Bricks
             _levelConfig = levelConfig;
         }
         
-        public void Initialize()
+        public async UniTask InitializeAsync()
         {
-            SpawnBricks();
+            await SpawnBricksAsync();
         }
 
-        private void SpawnBricks()
+        private async UniTask SpawnBricksAsync()
         {
+            //simulate async loading
+            await UniTask.Delay(2000);
+            
             GameObject parent = new GameObject("Bricks");
             AddDisposable(new GameObjectDisposer(parent));
             

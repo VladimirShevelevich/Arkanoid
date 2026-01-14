@@ -8,10 +8,7 @@ namespace Arkanoid.Ball
         public static void Install(IContainerBuilder containerBuilder)
         {
             containerBuilder.Register<BallFactory>(Lifetime.Scoped);
-            containerBuilder.UseEntryPoints(ep =>
-            {
-                ep.Add<BallService>();
-            });
+            containerBuilder.Register<BallService>(Lifetime.Scoped);
         }
     }
 }

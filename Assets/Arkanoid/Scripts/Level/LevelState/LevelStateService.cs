@@ -9,7 +9,7 @@ namespace Arkanoid.LevelState
     /// <summary>
     /// managing "win" and "game over" states of the game
     /// </summary>
-    public class LevelStateService : IInitializable, ILevelStateService
+    public class LevelStateService : ILevelStateService
     {
         public IReadOnlyReactiveProperty<Type> CurrentState => _currentStateProperty;
         private readonly ReactiveProperty<Type> _currentStateProperty = new();
@@ -29,7 +29,7 @@ namespace Arkanoid.LevelState
 
         private void SetInitialState()
         {
-            SetState(typeof(GameplayState));
+            SetState(typeof(LoadingState));
         }
 
         private void SetState(Type stateType)
