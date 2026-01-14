@@ -13,5 +13,10 @@ namespace Arkanoid.LevelState
             AddDisposable(presenter);
             AddDisposable(new GameObjectDisposer(view.gameObject));
         }
+
+        public void Hide()
+        {
+            
+        }
     }
 }

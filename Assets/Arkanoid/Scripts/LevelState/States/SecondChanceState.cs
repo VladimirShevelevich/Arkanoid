@@ -1,7 +1,6 @@
 ﻿using System;
 using Arkanoid.LevelState.SecondChance;
 using Arkanoid.Popups;
-using UniRx;
 
 namespace Arkanoid.LevelState.States
 {
@@ -18,12 +17,20 @@ namespace Arkanoid.LevelState.States
         
         public void Init()
         {
-            _popupsService.ShowPopup<SecondChancePopupFactory>();    
+            _popupsService.ShowPopup<SecondChancePopupFactory>(new SecondChancePopupContext
+            {
+                OnTryAgainCall = OnTryAgainCall
+            });    
+        }
+
+        private void OnTryAgainCall()
+        {
+            SetState?.Invoke(typeof(GameplayState));
         }
 
         public void Dispose()
         {
-            
+            _popupsService.HidePopup<SecondChancePopupFactory>();
         }
     }
 }

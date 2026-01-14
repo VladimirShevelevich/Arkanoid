@@ -15,7 +15,7 @@ namespace Arkanoid.LevelState
             _objectResolver = objectResolver;
         }
         
-        public override IPopup Create()
+        public override IPopup Create(object context)
         {
             GameOverPopupView view = InstantiateView(_levelStateContent.GameOverPopupPrefab);
             GameOverPopupPresenter presenter = CreatePresenter(view);

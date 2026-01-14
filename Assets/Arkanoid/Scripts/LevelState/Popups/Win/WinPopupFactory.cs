@@ -15,7 +15,7 @@ namespace Arkanoid.LevelState
             _objectResolver = objectResolver;
         }
         
-        public override IPopup Create()
+        public override IPopup Create(object context)
         {
             WinPopupView view = InstantiateView(_levelStateContent.WinPopupPrefab);
             WinPopupPresenter presenter = CreatePresenter(view);

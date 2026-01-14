@@ -15,16 +15,17 @@ namespace Arkanoid.LevelState.SecondChance
             _objectResolver = objectResolver;
         }
         
-        public override IPopup Create()
+        public override IPopup Create(object context)
         {
             SecondChancePopupView view = InstantiateView(_levelStateContent.SecondChancePopupPrefab);
-            SecondChancePopupPresenter presenter = CreatePresenter(view);
+            SecondChancePopupPresenter presenter = CreatePresenter(view, context);
             return presenter;
         }
 
-        private SecondChancePopupPresenter CreatePresenter(SecondChancePopupView view)
+        private SecondChancePopupPresenter CreatePresenter(SecondChancePopupView view, object context)
         {
             SecondChancePopupPresenter presenter = _objectResolver.Resolve<SecondChancePopupPresenter>();
+            presenter.SetContext((SecondChancePopupContext)context);
             presenter.BindView(view);
             return presenter;
         }

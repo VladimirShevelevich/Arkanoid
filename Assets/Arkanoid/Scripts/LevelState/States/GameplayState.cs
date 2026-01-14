@@ -43,6 +43,7 @@ namespace Arkanoid.LevelState.States
 
         private void SetSecondStateState()
         {
+            _secondChanceIsUsed = true;
             SetState?.Invoke(typeof(SecondChanceState));    
         }
 

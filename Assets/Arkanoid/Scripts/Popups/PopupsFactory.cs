@@ -11,7 +11,7 @@ namespace Arkanoid.Popups
             _mainCanvas = mainCanvas;
         }
         
-        public abstract IPopup Create();
+        public abstract IPopup Create(object context);
 
         protected T InstantiateView<T>(T viewPrefab) where T : MonoBehaviour
         {
