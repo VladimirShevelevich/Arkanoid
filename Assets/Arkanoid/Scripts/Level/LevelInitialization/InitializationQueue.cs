@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Arkanoid.Ball;
 using Arkanoid.Bricks;
-using Arkanoid.LevelState;
 using Arkanoid.Platform;
-using Arkanoid.Tools.Initialization;
 using Cysharp.Threading.Tasks;
+using UniRx;
 using VContainer.Unity;
 
 namespace Arkanoid.LevelInitialization
 {
     public class InitializationQueue : IInitializable
     {
+        public IObservable<Unit> OnInitializationCompleted => _onInitializationCompleted;
+        private readonly ReactiveCommand _onInitializationCompleted = new();
+        
         private readonly IBricksService _brickService;
         private readonly IPlatformService _platformService;
         private readonly BallService _ballService;
@@ -32,15 +35,16 @@ namespace Arkanoid.LevelInitialization
         private async UniTask InitializeAsync()
         {
             //initialization order depended services
-            var asyncInitializables = new List<UniTask>
+            var parallelInitializables = new List<UniTask>
             {
                 _brickService.InitializeAsync(),
                 _platformService.InitializeAsync()
             };
 
-            await UniTask.WhenAll(asyncInitializables);
+            await UniTask.WhenAll(parallelInitializables);
             
             _ballService.Initialize();
+            _onInitializationCompleted?.Execute();
         }
     }
 }

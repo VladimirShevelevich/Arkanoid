@@ -27,7 +27,7 @@ namespace Arkanoid.Level
             ScoreInstaller.Install(builder);
             HudInstaller.Install(builder);
 
-            builder.RegisterEntryPoint<InitializationQueue>();
+            builder.RegisterEntryPoint<InitializationQueue>().AsSelf();
         }
     }
 }
