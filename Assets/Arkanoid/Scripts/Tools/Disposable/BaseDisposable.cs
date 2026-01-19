@@ -15,7 +15,7 @@ namespace Arkanoid.Tools.Disposable
 
         public virtual void Dispose()
         {
-            _compositeDisposable.Dispose();
+            _compositeDisposable?.Dispose();
         }
     }
 }

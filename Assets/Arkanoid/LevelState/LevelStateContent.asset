@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GameOverPopupPrefab>k__BackingField: {fileID: 8571917906402340103, guid: 593520d995c06ed47859782d9aee6e54, type: 3}
   <WinPopupPrefab>k__BackingField: {fileID: 7934946010710763149, guid: a9f986bd7d6a87d4c98b4ec9cd672f67, type: 3}
+  <SecondChancePopupPrefab>k__BackingField: {fileID: 3798498942381833757, guid: 212122b6d06228f49ab2c00210bf8462, type: 3}
   <GameOverSound>k__BackingField: {fileID: 8300000, guid: 44766caa059435f4fb71af84b2bea7e4, type: 3}
   <WinSound>k__BackingField: {fileID: 8300000, guid: 2b8670b132d29984c93743808adbfcb3, type: 3}

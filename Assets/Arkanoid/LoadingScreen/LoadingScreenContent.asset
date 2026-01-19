@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03b406ef87d4d5db2b612e77f082d8f, type: 3}
+  m_Name: LoadingScreenContent
+  m_EditorClassIdentifier: 
+  <LoadingScreenPrefab>k__BackingField: {fileID: 2953321741644974035, guid: 639340a78ed12b1488d815b51302ebeb, type: 3}
