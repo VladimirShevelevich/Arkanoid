@@ -11,15 +11,15 @@ namespace Arkanoid.LevelState.States
         private readonly IBricksService _bricksService;
         private readonly LevelConfig _levelConfig;
         private readonly IWinCondition _winCondition;
+        private readonly SecondChanceController _secondChanceController;
 
-        private bool _secondChanceIsUsed;
-        
         public event Action<Type> SetState;
         
-        public GameplayState(IDeadZoneService deadZoneService, IWinCondition winCondition)
+        public GameplayState(IDeadZoneService deadZoneService, IWinCondition winCondition, SecondChanceController secondChanceController)
         {
             _deadZoneService = deadZoneService;
             _winCondition = winCondition;
+            _secondChanceController = secondChanceController;
         }
 
         public void Init()
@@ -30,7 +30,7 @@ namespace Arkanoid.LevelState.States
 
         private void OnDeadZoneTriggered()
         {
-            if (_secondChanceIsUsed)
+            if (_secondChanceController.IsSecondChanceUsed)
                 SetGameOverState();
             else
                 SetSecondStateState();
@@ -43,7 +43,6 @@ namespace Arkanoid.LevelState.States
 
         private void SetSecondStateState()
         {
-            _secondChanceIsUsed = true;
             SetState?.Invoke(typeof(SecondChanceState));    
         }
 

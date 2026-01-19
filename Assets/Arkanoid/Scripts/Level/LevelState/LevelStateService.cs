@@ -14,6 +14,7 @@ namespace Arkanoid.LevelState
         public IReadOnlyReactiveProperty<Type> CurrentState => _currentStateProperty;
         private readonly ReactiveProperty<Type> _currentStateProperty = new();
 
+        
         private readonly IObjectResolver _objectResolver;
         private ILevelState _currentState;
 
@@ -26,6 +27,7 @@ namespace Arkanoid.LevelState
         {
             SetInitialState();
         }
+
 
         private void SetInitialState()
         {

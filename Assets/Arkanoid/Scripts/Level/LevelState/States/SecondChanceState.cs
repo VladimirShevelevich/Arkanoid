@@ -9,10 +9,12 @@ namespace Arkanoid.LevelState.States
         public event Action<Type> SetState;
         
         private readonly IPopupsService _popupsService;
+        private readonly SecondChanceController _secondChanceController;
 
-        public SecondChanceState(IPopupsService popupsService)
+        public SecondChanceState(IPopupsService popupsService, SecondChanceController secondChanceController)
         {
             _popupsService = popupsService;
+            _secondChanceController = secondChanceController;
         }
         
         public void Init()
@@ -21,6 +23,7 @@ namespace Arkanoid.LevelState.States
             {
                 OnTryAgainCall = OnTryAgainCall
             });    
+            _secondChanceController.OnSecondChanceUsed();
         }
 
         private void OnTryAgainCall()

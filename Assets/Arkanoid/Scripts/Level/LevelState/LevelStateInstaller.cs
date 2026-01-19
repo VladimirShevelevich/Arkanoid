@@ -11,11 +11,13 @@ namespace Arkanoid.LevelState
         {
             builder.UseEntryPoints(ep =>
             {
-                ep.Add<LevelStateService>();
+                ep.Add<LevelStateService>().AsSelf();
             });
             RegisterPopups(builder);
             RegisterStates(builder);
             RegisterWinCondition(builder);
+            
+            builder.Register<SecondChanceController>(Lifetime.Scoped);
         }
 
         private static void RegisterPopups(IContainerBuilder builder)
