@@ -1,4 +1,5 @@
 ﻿using VContainer;
+using VContainer.Unity;
 
 namespace Arkanoid.Bricks
 {
@@ -8,6 +9,10 @@ namespace Arkanoid.Bricks
         {
             builder.Register<BricksFactory>(Lifetime.Scoped);
             builder.Register<IBricksService, BricksService>(Lifetime.Scoped);
+            builder.UseEntryPoints(ep =>
+            {
+                ep.Add<BricksScoreCounter>();
+            });
         }
     }
 }
