@@ -4,7 +4,7 @@ using VContainer;
 
 namespace Arkanoid.LevelState.SecondChance
 {
-    public class SecondChancePopupFactory : PopupsFactory
+    public class SecondChancePopupFactory : PopupFactory
     {
         private readonly LevelStateContent _levelStateContent;
         private readonly IObjectResolver _objectResolver;

@@ -17,7 +17,7 @@ namespace Arkanoid.LevelState.States
         
         public void Init()
         {
-            _popupsService.ShowPopup<SecondChancePopupFactory>(new SecondChancePopupContext
+            _popupsService.ShowPopup(PopupType.SecondChance, new SecondChancePopupContext
             {
                 OnTryAgainCall = OnTryAgainCall
             });    
@@ -30,7 +30,7 @@ namespace Arkanoid.LevelState.States
 
         public void Dispose()
         {
-            _popupsService.HidePopup<SecondChancePopupFactory>();
+            _popupsService.HidePopup(PopupType.SecondChance);
         }
     }
 }

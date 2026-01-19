@@ -2,11 +2,11 @@
 
 namespace Arkanoid.Popups
 {
-    public abstract class PopupsFactory
+    public abstract class PopupFactory
     {
         private readonly Canvas _mainCanvas;
 
-        protected PopupsFactory(Canvas mainCanvas)
+        protected PopupFactory(Canvas mainCanvas)
         {
             _mainCanvas = mainCanvas;
         }

@@ -1,36 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Arkanoid.Tools.Disposable;
-using VContainer;
 
 namespace Arkanoid.Popups
 {
     public class PopupsService : BaseDisposable, IPopupsService
     {
-        private readonly IObjectResolver _objectResolver;
-
-        private KeyValuePair<Type, IPopup> _openedPopup;
+        private readonly PopupAbstractFactory _popupAbstractFactory;
+        private KeyValuePair<PopupType, IPopup> _openedPopup;
         
-        public PopupsService(IObjectResolver objectResolver)
+        public PopupsService(PopupAbstractFactory popupAbstractFactory)
         {
-            _objectResolver = objectResolver;
+            _popupAbstractFactory = popupAbstractFactory;
         }
         
-        public void ShowPopup<TFactory>(object context) where TFactory : PopupsFactory
+        public void ShowPopup(PopupType popupType, object context)
         {
-            TFactory factory = _objectResolver.Resolve<TFactory>();
-            var popup = factory.Create(context);
+            var popupFactory = _popupAbstractFactory.GetFactory(popupType);
+            var popup = popupFactory.Create(context);
             AddDisposable(popup);
-            _openedPopup = new KeyValuePair<Type, IPopup>(typeof(TFactory), popup);
+            _openedPopup = new KeyValuePair<PopupType, IPopup>(popupType, popup);
         }
 
-        public void HidePopup<TFactory>() where TFactory : PopupsFactory
+        public void HidePopup(PopupType popupType)
         {
-            if (_openedPopup.Key != typeof(TFactory)) 
+            if (_openedPopup.Key != popupType)
                 return;
             
-            var popup = _openedPopup.Value;
-            popup.Dispose();
+            _openedPopup.Value.Dispose();
             _openedPopup = default;
         }
     }

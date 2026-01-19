@@ -4,7 +4,7 @@ using VContainer;
 
 namespace Arkanoid.LevelState
 {
-    public class GameOverPopupFactory : PopupsFactory
+    public class GameOverPopupFactory : PopupFactory
     {
         private readonly LevelStateContent _levelStateContent;
         private readonly IObjectResolver _objectResolver;
