@@ -15,3 +15,4 @@ MonoBehaviour:
   <Levels>k__BackingField:
   - {fileID: 11400000, guid: ac0729aeb574dd245879fef80f8967c5, type: 2}
   - {fileID: 11400000, guid: 6d0e83f0bebec8649803c6ac60ecce5d, type: 2}
+  <LevelScopePrefab>k__BackingField: {fileID: 7746833861820676192, guid: 063e263ec2cb2b948a0496a80998fb16, type: 3}
