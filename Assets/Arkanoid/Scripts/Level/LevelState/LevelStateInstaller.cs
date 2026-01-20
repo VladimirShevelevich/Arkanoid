@@ -30,6 +30,13 @@ namespace Arkanoid.LevelState
             
             builder.Register<SecondChancePopupFactory>(Lifetime.Singleton).AsSelf();
             builder.Register<SecondChancePopupPresenter>(Lifetime.Transient).AsSelf();
+            
+            builder.UseEntryPoints(ep =>
+            {
+                ep.Add<WinPopupFactory>();
+                ep.Add<GameOverPopupFactory>();
+                ep.Add<SecondChancePopupFactory>();
+            });
         }
 
         private static void RegisterStates(IContainerBuilder builder)

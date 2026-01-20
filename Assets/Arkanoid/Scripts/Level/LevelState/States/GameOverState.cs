@@ -1,10 +1,11 @@
 ﻿using System;
 using Arkanoid.Popups;
 using Arkanoid.Sound;
+using Arkanoid.Tools.Disposable;
 
 namespace Arkanoid.LevelState.States
 {
-    public class GameOverState : ILevelState
+    public class GameOverState : BaseDisposable, ILevelState
     {
         private readonly IPopupsService _popupsService;
         private readonly ISoundService _soundService;
@@ -21,13 +22,15 @@ namespace Arkanoid.LevelState.States
 
         public void Init()
         {
-            _popupsService.ShowPopup(PopupType.GameOver);
+            var popup = _popupsService.ShowPopup<IPopup>(PopupType.GameOver);
+            AddDisposable(popup);
+            
             _soundService.PlaySound(_levelStateContent.GameOverSound);
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
-            
+            base.Dispose();
         }
     }
 }
