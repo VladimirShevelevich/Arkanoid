@@ -13,11 +13,12 @@ namespace Arkanoid.Popups
             _popupAbstractFactory = popupAbstractFactory;
         }
         
-        public void ShowPopup(PopupType popupType, object context)
+        public T ShowPopup<T>(PopupType popupType) where T : IPopup
         {
-            var popup = _popupAbstractFactory.CreatePopup(popupType, context);
+            var popup = _popupAbstractFactory.CreatePopup(popupType);
             AddDisposable(popup);
             _openedPopup = new KeyValuePair<PopupType, IPopup>(popupType, popup);
+            return (T)popup;
         }
 
         public void HidePopup(PopupType popupType)

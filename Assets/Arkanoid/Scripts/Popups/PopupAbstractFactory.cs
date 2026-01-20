@@ -10,29 +10,13 @@ namespace Arkanoid.Popups
 
         public void RegisterFactory(PopupFactory factory)
         {
-            if (_factoriesMap.ContainsKey(factory.PopupType))
-            {
-                Debug.LogWarning($"The factory of type {factory.PopupType} has already been registered");
-                return;
-            }
-            
-            _factoriesMap.Add(factory.PopupType, factory);
+            _factoriesMap[factory.PopupType] = factory;
         }
 
-        public void UnregisterFactory(PopupFactory factory)
-        {
-            if (_factoriesMap.TryGetValue(factory.PopupType, out var f))
-            {
-                _factoriesMap.Remove(factory.PopupType);
-            }
-            
-            Debug.LogWarning($"The factory of type {factory.PopupType} hasn't been registered");
-        }
-
-        public IPopup CreatePopup(PopupType popupType, object context)
+        public IPopup CreatePopup(PopupType popupType)
         {
             var factory = GetFactory(popupType);
-            return factory.Create(context);
+            return factory.Create();
         }
 
         private PopupFactory GetFactory(PopupType popupType)

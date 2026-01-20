@@ -1,10 +1,12 @@
 ﻿using System;
 using Arkanoid.LevelState.SecondChance;
 using Arkanoid.Popups;
+using Arkanoid.Tools.Disposable;
+using UniRx;
 
 namespace Arkanoid.LevelState.States
 {
-    public class SecondChanceState : ILevelState
+    public class SecondChanceState : BaseDisposable, ILevelState
     {
         public event Action<Type> SetState;
         
@@ -19,11 +21,15 @@ namespace Arkanoid.LevelState.States
         
         public void Init()
         {
-            _popupsService.ShowPopup(PopupType.SecondChance, new SecondChancePopupContext
-            {
-                OnTryAgainCall = OnTryAgainCall
-            });    
+            ShowPopup();
             _secondChanceController.OnSecondChanceUsed();
+        }
+
+        private void ShowPopup()
+        {
+            var popup = _popupsService.ShowPopup<ISecondChancePopup>(PopupType.SecondChance);
+            AddDisposable(popup);
+            AddDisposable(popup.OnTryAgainCall.Subscribe(_ => OnTryAgainCall()));
         }
 
         private void OnTryAgainCall()

@@ -1,19 +1,16 @@
 ﻿using System;
-using Arkanoid.Popups;
 using Arkanoid.Tools.Disposable;
+using UniRx;
 
 namespace Arkanoid.LevelState.SecondChance
 {
-    public class SecondChancePopupPresenter : BaseDisposable, IPopup
+    public class SecondChancePopupPresenter : BaseDisposable, ISecondChancePopup
     {
-        private SecondChancePopupView _view;
-        private Action _onTryAgainCall;
+        public IObservable<Unit> OnTryAgainCall => _onTryAgainCall;
+        private readonly ReactiveCommand _onTryAgainCall = new();
 
-        public void SetContext(SecondChancePopupContext context)
-        {
-            _onTryAgainCall = context.OnTryAgainCall;
-        }
-        
+        private SecondChancePopupView _view;
+
         public void BindView(SecondChancePopupView view)
         {
             _view = view;
@@ -24,7 +21,7 @@ namespace Arkanoid.LevelState.SecondChance
 
         private void OnTryAgainClick()
         {
-            _onTryAgainCall?.Invoke();            
+            _onTryAgainCall.Execute();
         }
     }
 }

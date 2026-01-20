@@ -12,13 +12,14 @@ namespace Arkanoid.LevelState
         private readonly IObjectResolver _objectResolver;
 
 
-        public GameOverPopupFactory(LevelStateContent levelStateContent, IObjectResolver objectResolver, Canvas mainCanvas) : base(mainCanvas) 
+        public GameOverPopupFactory(LevelStateContent levelStateContent, IObjectResolver objectResolver,
+            Canvas mainCanvas, PopupAbstractFactory popupAbstractFactory) : base(mainCanvas, popupAbstractFactory) 
         {
             _levelStateContent = levelStateContent;
             _objectResolver = objectResolver;
         }
 
-        public override IPopup Create(object context)
+        public override IPopup Create()
         {
             GameOverPopupView view = InstantiateView(_levelStateContent.GameOverPopupPrefab);
             GameOverPopupPresenter presenter = CreatePresenter(view);

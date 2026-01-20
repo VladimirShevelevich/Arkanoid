@@ -2,8 +2,7 @@
 {
     public interface IPopupsService
     {
-        /// <typeparam name="TFactory">Popup factory type</typeparam>
-        void ShowPopup(PopupType popupType, object context = null);
+        T ShowPopup<T>(PopupType popupType) where T : IPopup;
         void HidePopup(PopupType popupType);
     }
 }
