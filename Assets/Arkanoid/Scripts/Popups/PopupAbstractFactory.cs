@@ -1,36 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using Arkanoid.LevelState;
-using Arkanoid.LevelState.SecondChance;
-using VContainer;
+using UnityEngine;
 
 namespace Arkanoid.Popups
 {
     public class PopupAbstractFactory
     {
-        private readonly IObjectResolver _objectResolver;
+        private static readonly Dictionary<PopupType, PopupFactory> _factoriesMap = new();
 
-        public PopupAbstractFactory(IObjectResolver objectResolver)
+        public void RegisterFactory(PopupFactory factory)
         {
-            _objectResolver = objectResolver;
+            if (_factoriesMap.ContainsKey(factory.PopupType))
+            {
+                Debug.LogWarning($"The factory of type {factory.PopupType} has already been registered");
+                return;
+            }
+            
+            _factoriesMap.Add(factory.PopupType, factory);
         }
 
-        private static readonly Dictionary<PopupType, Type> _factoriesMap = new()
+        public void UnregisterFactory(PopupFactory factory)
         {
-            { PopupType.Win, typeof(WinPopupFactory) },
-            { PopupType.GameOver, typeof(GameOverPopupFactory) },
-            { PopupType.SecondChance, typeof(SecondChancePopupFactory) }
-        };
-
-        public PopupFactory GetFactory(PopupType popupType)
-        {
-            if (_factoriesMap.TryGetValue(popupType, out Type factoryType))
+            if (_factoriesMap.TryGetValue(factory.PopupType, out var f))
             {
-                var factory = _objectResolver.Resolve(factoryType);
-                return (PopupFactory)factory;
+                _factoriesMap.Remove(factory.PopupType);
+            }
+            
+            Debug.LogWarning($"The factory of type {factory.PopupType} hasn't been registered");
+        }
+
+        public IPopup CreatePopup(PopupType popupType, object context)
+        {
+            var factory = GetFactory(popupType);
+            return factory.Create(context);
+        }
+
+        private PopupFactory GetFactory(PopupType popupType)
+        {
+            if (_factoriesMap.TryGetValue(popupType, out PopupFactory factory))
+            {
+                return factory;
             }
 
-            throw new InvalidOperationException($"Can't resolve the popup factory of the type {popupType}");
+            throw new InvalidOperationException($"The factory of type {popupType} hasn't been registered");
         }
     }
 }

@@ -2,6 +2,7 @@
 using Arkanoid.Input;
 using Arkanoid.Level;
 using Arkanoid.LoadingScreen;
+using Arkanoid.Popups;
 using Arkanoid.Sound;
 using UnityEngine;
 using VContainer;
@@ -22,6 +23,7 @@ namespace Arkanoid
             LoadingScreenInstaller.Install(builder);
             InputInstaller.Install(builder);
             SoundInstaller.Install(builder);
+            PopupsInstaller.Install(builder);
             LevelCreatorInstaller.Install(builder);
         }
     }

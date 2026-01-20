@@ -6,15 +6,18 @@ namespace Arkanoid.LevelState
 {
     public class WinPopupFactory : PopupFactory
     {
+        public override PopupType PopupType => PopupType.Win;
+        
         private readonly LevelStateContent _levelStateContent;
         private readonly IObjectResolver _objectResolver;
+
 
         public WinPopupFactory(LevelStateContent levelStateContent, IObjectResolver objectResolver, Canvas mainCanvas) : base(mainCanvas) 
         {
             _levelStateContent = levelStateContent;
             _objectResolver = objectResolver;
         }
-        
+
         public override IPopup Create(object context)
         {
             WinPopupView view = InstantiateView(_levelStateContent.WinPopupPrefab);

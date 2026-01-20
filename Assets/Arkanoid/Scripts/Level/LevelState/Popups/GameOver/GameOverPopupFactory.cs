@@ -6,15 +6,18 @@ namespace Arkanoid.LevelState
 {
     public class GameOverPopupFactory : PopupFactory
     {
+        public override PopupType PopupType => PopupType.GameOver;
+        
         private readonly LevelStateContent _levelStateContent;
         private readonly IObjectResolver _objectResolver;
+
 
         public GameOverPopupFactory(LevelStateContent levelStateContent, IObjectResolver objectResolver, Canvas mainCanvas) : base(mainCanvas) 
         {
             _levelStateContent = levelStateContent;
             _objectResolver = objectResolver;
         }
-        
+
         public override IPopup Create(object context)
         {
             GameOverPopupView view = InstantiateView(_levelStateContent.GameOverPopupPrefab);

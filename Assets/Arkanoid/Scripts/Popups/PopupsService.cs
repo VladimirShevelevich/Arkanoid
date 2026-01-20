@@ -15,8 +15,7 @@ namespace Arkanoid.Popups
         
         public void ShowPopup(PopupType popupType, object context)
         {
-            var popupFactory = _popupAbstractFactory.GetFactory(popupType);
-            var popup = popupFactory.Create(context);
+            var popup = _popupAbstractFactory.CreatePopup(popupType, context);
             AddDisposable(popup);
             _openedPopup = new KeyValuePair<PopupType, IPopup>(popupType, popup);
         }
